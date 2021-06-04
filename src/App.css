@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.light{
+  background-color: aliceblue;
+}
+.dark{
+  background-color: black;
+}
+.box{
+  height:100px;
+  width:100px;
+}

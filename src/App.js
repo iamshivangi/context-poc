@@ -1,25 +1,48 @@
-import logo from './logo.svg';
+import { createContext, useContext, useState } from 'react';
 import './App.css';
 
-function App() {
+const context = createContext(null);
+
+const B = props => {
+  const [theme, setTheme] = useState('light');
+  return <context.Provider value={{ theme, setTheme }} {...props} />;
+};
+
+const App = props => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <B>
+        <A />
+      </B>
+      <B>
+        <A />
+      </B>
+      <B>
+        <A />
+      </B>
+      <B>
+        <A />
+      </B>
+      <B>
+        <A />
+      </B>
+      <B>
+        <A />
+      </B>
     </div>
   );
-}
+};
+
+const A = () => {
+  const { theme, setTheme } = useContext(context);
+
+  return (
+    <div className={`box ${theme}`}>
+      <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+        Click to change theme
+      </button>
+    </div>
+  );
+};
 
 export default App;
